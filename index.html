@@ -47,50 +47,55 @@
 
             <div class="today-detail">
               <div class="row">
-                <div class="city">City</div>
+                <div id="city"></div>
                 <span id="location-text"
                   ><i class="fa-solid fa-location-dot" id="location-icon"></i
                 ></span>
               </div>
-              <div class="row">
-                <div class="day-time">Day Time</div>
-              </div>
-              <div class="row">
-                <span class="col 6 prediction">Clear/Rain/Sun</span>
-                <span class="col 6 humidity-wind">Humidity/Wind</span>
+              <div class="prediction">
+                <div class="row">
+                  <div class="col-6" id="day-time"></div>
+                  <span class="col-3">Humidity</span>
+                  <span class="col-3">Wind</span>
+                </div>
+                <div class="row">
+                  <span class="col-6" id="description"></span>
+                  <span class="col-3" id="humidity"></span>
+                  <span class="col-3" id="wind"></span>
+                </div>
               </div>
             </div>
             <img class="image-today" src="media/sun.svg" alt="sun" />
             <span class="temperature-today">
-              <span id="temperature">17</span>
+              <span id="temperature"></span>
               <a id="celsius-element" class="boldTemp no-events" href="#">°C</a>
               <a id="fahrenheit-element" href="#">°F</a>
             </span>
             <div class="text">
               <div class="row">
                 <div class="col-2 prediction-small">
-                  <span class="prediction-one">Day</span>
+                  <span id="prediction-one">Day</span>
                   <span class="image">
                     <img class="small-image" src="media/cloud.svg" alt="cloud"
                   /></span>
                   ..°
                 </div>
                 <div class="col-2 prediction-small">
-                  <span class="prediction-two">Day</span>
+                  <span id="prediction-two">Day</span>
                   <span class="image">
                     <img class="small-image" src="media/sun.svg" alt="sun" />
                   </span>
                   ..°
                 </div>
                 <div class="col-2 prediction-small">
-                  <span class="prediction-three">Day</span>
+                  <span id="prediction-three">Day</span>
                   <span class="image">
                     <img class="small-image" src="media/rain.svg" alt="rain" />
                   </span>
                   ..°
                 </div>
                 <div class="col-2 prediction-small">
-                  <span class="prediction-four">Day</span>
+                  <span id="prediction-four">Day</span>
                   <span class="image">
                     <img
                       class="small-image"
@@ -101,7 +106,7 @@
                   ..°
                 </div>
                 <div class="col-2 prediction-small">
-                  <span class="prediction-five">Day</span>
+                  <span id="prediction-five">Day</span>
                   <span class="image">
                     <img
                       class="small-image"

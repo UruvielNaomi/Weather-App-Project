@@ -1,11 +1,16 @@
 function showSearchedTemperature(response) {
   let temperature = Math.round(response.data.main.temp);
   let currentTemperature = document.querySelector("#temperature");
-  let currentDescription = document.querySelector(".prediction");
-  let currentCity = document.querySelector(".city");
+  let currentDescription = document.querySelector("#description");
+  let currentCity = document.querySelector("#city");
+  let currentHumidity = document.querySelector("#humidity");
+  let currentWind = document.querySelector("#wind");
+  let currentWindRounded = Math.round(response.data.wind.speed);
   currentCity.innerHTML = `${response.data.name}`;
   currentTemperature.innerHTML = temperature;
   currentDescription.innerHTML = response.data.weather[0].description;
+  currentHumidity.innerHTML = `${response.data.main.humidity}%`;
+  currentWind.innerHTML = `${currentWindRounded} km/h`;
   fahrenheitElement.classList.remove("boldTemp", "no-events");
   celsiusElement.classList.add("boldTemp", "no-events");
 }
@@ -13,7 +18,7 @@ function showSearchedTemperature(response) {
 function searchCity(event) {
   event.preventDefault();
   let cityInput = document.querySelector("#city-input");
-  let city = document.querySelector(".city");
+  let city = document.querySelector("#city");
   let cityValue = cityInput.value;
   city.innerHTML = cityValue;
   let apiKey = "3479815e27bf9e90efaa9982f0052413";
@@ -23,11 +28,16 @@ function searchCity(event) {
 function showDefaultTemperature(response) {
   let temperature = Math.round(response.data.main.temp);
   let currentTemperature = document.querySelector("#temperature");
-  let currentDescription = document.querySelector(".prediction");
-  let currentCity = document.querySelector(".city");
+  let currentDescription = document.querySelector("#description");
+  let currentCity = document.querySelector("#city");
+  let currentHumidity = document.querySelector("#humidity");
+  let currentWind = document.querySelector("#wind");
+  let currentWindRounded = Math.round(response.data.wind.speed);
   currentCity.innerHTML = `${response.data.name}`;
   currentTemperature.innerHTML = temperature;
   currentDescription.innerHTML = response.data.weather[0].description;
+  currentHumidity.innerHTML = `${response.data.main.humidity}%`;
+  currentWind.innerHTML = `${currentWindRounded} km/h`;
 }
 
 function showPosition(position) {
@@ -79,7 +89,7 @@ function formatDate() {
     currentMinutes = `0${currentMinutes}`;
   }
 
-  let currentWeekdayTime = document.querySelector(".day-time");
+  let currentWeekdayTime = document.querySelector("#day-time");
   currentWeekdayTime.innerHTML = `${weekday} ${currentHour}:${currentMinutes}`;
 }
 

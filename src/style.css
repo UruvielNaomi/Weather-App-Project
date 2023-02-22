@@ -92,15 +92,11 @@ a {
   position: relative;
   left: 5px;
 }
-.city {
-  font-size: 18px;
-}
-.day-time,
-.prediction,
-.humidity-wind {
-  font-size: 12px;
+.prediction {
+  font-size: 11.5px;
   text-transform: capitalize;
 }
+
 .image-today {
   position: relative;
   left: 5px;
@@ -143,11 +139,17 @@ a {
 .no-events {
   pointer-events: none;
 }
+#city {
+  font-size: 18px;
+}
 #location-text {
   font-size: 10px;
   position: absolute;
   left: -22px;
   top: 5px;
+}
+#wind {
+  text-transform: lowercase;
 }
 #celsius-element,
 #fahrenheit-element {
