@@ -1,3 +1,20 @@
+function formatDate(timestamp) {
+  let now = new Date(timestamp);
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+  let weekday = days[now.getDay()];
+  let currentHour = now.getHours();
+  if (currentHour < 10) {
+    currentHour = `0${currentHour}`;
+  }
+
+  let currentMinutes = now.getMinutes();
+  if (currentMinutes < 10) {
+    currentMinutes = `0${currentMinutes}`;
+  }
+
+  return `Updated on: ${weekday} ${currentHour}:${currentMinutes}`;
+}
 function showSearchedTemperature(response) {
   let temperature = Math.round(response.data.main.temp);
   let currentTemperature = document.querySelector("#temperature");
@@ -6,11 +23,13 @@ function showSearchedTemperature(response) {
   let currentHumidity = document.querySelector("#humidity");
   let currentWind = document.querySelector("#wind");
   let currentWindRounded = Math.round(response.data.wind.speed);
+  let currentDate = document.querySelector("#day-time");
   currentCity.innerHTML = `${response.data.name}`;
   currentTemperature.innerHTML = temperature;
   currentDescription.innerHTML = response.data.weather[0].description;
   currentHumidity.innerHTML = `${response.data.main.humidity}%`;
   currentWind.innerHTML = `${currentWindRounded} km/h`;
+  currentDate.innerHTML = formatDate(response.data.dt * 1000);
   fahrenheitElement.classList.remove("boldTemp", "no-events");
   celsiusElement.classList.add("boldTemp", "no-events");
 }
@@ -33,11 +52,13 @@ function showDefaultTemperature(response) {
   let currentHumidity = document.querySelector("#humidity");
   let currentWind = document.querySelector("#wind");
   let currentWindRounded = Math.round(response.data.wind.speed);
+  let currentDate = document.querySelector("#day-time");
   currentCity.innerHTML = `${response.data.name}`;
   currentTemperature.innerHTML = temperature;
   currentDescription.innerHTML = response.data.weather[0].description;
   currentHumidity.innerHTML = `${response.data.main.humidity}%`;
   currentWind.innerHTML = `${currentWindRounded} km/h`;
+  currentDate.innerHTML = formatDate(response.data.dt * 1000);
 }
 
 function showPosition(position) {
@@ -66,33 +87,6 @@ function convertToCelsius(event) {
   celsiusElement.classList.add("boldTemp", "no-events");
 }
 
-function formatDate() {
-  let now = new Date();
-  let days = [
-    "Sunday",
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday",
-  ];
-
-  let weekday = days[now.getDay()];
-  let currentHour = now.getHours();
-  if (currentHour < 10) {
-    currentHour = `0${currentHour}`;
-  }
-
-  let currentMinutes = now.getMinutes();
-  if (currentMinutes < 10) {
-    currentMinutes = `0${currentMinutes}`;
-  }
-
-  let currentWeekdayTime = document.querySelector("#day-time");
-  currentWeekdayTime.innerHTML = `${weekday} ${currentHour}:${currentMinutes}`;
-}
-
 function darkThemeWebsite() {
   var element = document.body;
   element.classList.toggle("darkTheme");
@@ -109,8 +103,6 @@ celsiusElement.addEventListener("click", convertToCelsius);
 
 let darkButton = document.querySelector(".darkButton");
 darkButton.addEventListener("click", darkThemeWebsite);
-
-formatDate();
 
 navigator.geolocation.getCurrentPosition(showPosition);
 
