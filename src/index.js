@@ -44,6 +44,7 @@ function searchCity(event) {
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityValue}&units=metric&appid=${apiKey}`;
   axios.get(apiUrl).then(showSearchedTemperature);
 }
+
 function showDefaultTemperature(response) {
   let temperature = Math.round(response.data.main.temp);
   let currentTemperature = document.querySelector("#temperature");
@@ -77,6 +78,7 @@ function convertToFahrenheit(event) {
   celsiusElement.classList.remove("boldTemp", "no-events");
   fahrenheitElement.classList.add("boldTemp", "no-events");
 }
+
 function convertToCelsius(event) {
   event.preventDefault();
   let temperatureElement = document.querySelector("#temperature");
@@ -92,6 +94,10 @@ function darkThemeWebsite() {
   element.classList.toggle("darkTheme");
 }
 
+function getGeoLocation() {
+  navigator.geolocation.getCurrentPosition(showPosition);
+}
+
 let cityForm = document.querySelector("#city-form");
 cityForm.addEventListener("submit", searchCity);
 
@@ -104,11 +110,7 @@ celsiusElement.addEventListener("click", convertToCelsius);
 let darkButton = document.querySelector(".darkButton");
 darkButton.addEventListener("click", darkThemeWebsite);
 
-navigator.geolocation.getCurrentPosition(showPosition);
-
-function getGeoLocation() {
-  navigator.geolocation.getCurrentPosition(showPosition);
-}
-
 let locationElement = document.querySelector("#location-icon");
 locationElement.addEventListener("click", getGeoLocation);
+
+navigator.geolocation.getCurrentPosition(showPosition);
