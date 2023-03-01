@@ -15,6 +15,29 @@ function formatDate(timestamp) {
 
   return `Updated on: ${weekday} ${currentHour}:${currentMinutes}`;
 }
+function displayForecast() {
+  let forecastElement = document.querySelector("#weather-forecast");
+  
+  let forecastHTML = `<div class="row">`;
+  let days = ["Thu", "Fri", "Sat", "Sun"];
+  days.forEach(function(day){
+    forecastHTML = forecastHTML + 
+    `
+    <div class="col-2 ">
+      <span id="day-forecast">${day}</span>
+      <span class="image">
+        <img class="small-image" src="media/cloud.svg" alt="cloud"
+      /></span>
+      <span class="temperature-prediction-max">17°  </span> <span class="temperature-prediction-min">9°</span>
+    </div>
+    `;
+  })
+  
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+
+  
+}
 function showSearchedTemperature(response) {
   let temperature = Math.round(response.data.main.temp);
   let currentTemperature = document.querySelector("#temperature");
@@ -54,6 +77,9 @@ function showDefaultTemperature(response) {
   let currentWind = document.querySelector("#wind");
   let currentWindRounded = Math.round(response.data.wind.speed);
   let currentDate = document.querySelector("#day-time");
+
+  displayForecast();
+
   currentCity.innerHTML = `${response.data.name}`;
   currentTemperature.innerHTML = temperature;
   currentDescription.innerHTML = response.data.weather[0].description;
