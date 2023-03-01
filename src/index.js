@@ -17,9 +17,9 @@ function formatDate(timestamp) {
 }
 function displayForecast() {
   let forecastElement = document.querySelector("#weather-forecast");
+  let days = ["Thu", "Fri", "Sat", "Sun"];
   
   let forecastHTML = `<div class="row">`;
-  let days = ["Thu", "Fri", "Sat", "Sun"];
   days.forEach(function(day){
     forecastHTML = forecastHTML + 
     `
@@ -35,9 +35,15 @@ function displayForecast() {
   
   forecastHTML = forecastHTML + `</div>`;
   forecastElement.innerHTML = forecastHTML;
+  }
 
-  
-}
+  function getForecast(coordinates){
+    let apiKey = "a3d36d3ff18dab96ef4b04bo91eb0t3c";
+    let apiUrl = `https://api.shecodes.io/weather/v1/current?lon=${coordinates.lon}&lat=${coordinates.lat}&key=${apiKey}&units=metric`;
+    
+    console.log(apiUrl);
+  }
+
 function showSearchedTemperature(response) {
   let temperature = Math.round(response.data.main.temp);
   let currentTemperature = document.querySelector("#temperature");
@@ -47,6 +53,10 @@ function showSearchedTemperature(response) {
   let currentWind = document.querySelector("#wind");
   let currentWindRounded = Math.round(response.data.wind.speed);
   let currentDate = document.querySelector("#day-time");
+
+  displayForecast();
+  getForecast(response.data.coord);
+
   currentCity.innerHTML = `${response.data.name}`;
   currentTemperature.innerHTML = temperature;
   currentDescription.innerHTML = response.data.weather[0].description;
@@ -79,6 +89,8 @@ function showDefaultTemperature(response) {
   let currentDate = document.querySelector("#day-time");
 
   displayForecast();
+  getForecast(response.data.coord);
+
 
   currentCity.innerHTML = `${response.data.name}`;
   currentTemperature.innerHTML = temperature;
