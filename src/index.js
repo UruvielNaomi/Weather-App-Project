@@ -67,6 +67,7 @@ function showSearchedTemperature(response) {
   let currentWind = document.querySelector("#wind");
   let currentWindRounded = Math.round(response.data.wind.speed);
   let currentDate = document.querySelector("#day-time");
+  let iconElement = document.querySelector("#image-today");
 
   getForecast(response.data.coord);
 
@@ -78,6 +79,11 @@ function showSearchedTemperature(response) {
   currentDate.innerHTML = formatDate(response.data.dt * 1000);
   fahrenheitElement.classList.remove("boldTemp", "no-events");
   celsiusElement.classList.add("boldTemp", "no-events");
+  iconElement.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
+  iconElement.setAttribute("alt", response.data.weather[0].description);
 }
 
 function searchCity(event) {
@@ -100,6 +106,7 @@ function showDefaultTemperature(response) {
   let currentWind = document.querySelector("#wind");
   let currentWindRounded = Math.round(response.data.wind.speed);
   let currentDate = document.querySelector("#day-time");
+  let iconElement = document.querySelector("#image-today");
   
   getForecast(response.data.coord);
 
@@ -109,6 +116,11 @@ function showDefaultTemperature(response) {
   currentHumidity.innerHTML = `${response.data.main.humidity}%`;
   currentWind.innerHTML = `${currentWindRounded} km/h`;
   currentDate.innerHTML = formatDate(response.data.dt * 1000);
+  iconElement.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
+  iconElement.setAttribute("alt", response.data.weather[0].description);
 }
 
 function showPosition(position) {
