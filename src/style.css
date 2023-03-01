@@ -54,8 +54,8 @@ a {
   margin: 0 auto;
   margin-top: 100px;
   padding: 0 30px;
-  max-width: 650px;
-  min-width: 650px;
+  max-width: 750px;
+  min-width: 675px;
   border-radius: 20px;
   border: solid 1px rgb(65, 65, 65);
   background: #fffcf3;
@@ -89,8 +89,12 @@ a {
   cursor: pointer;
 }
 .today-detail {
+  margin-top: 15px;
   position: relative;
   left: 5px;
+}
+.today-weather {
+  margin: 15px 0px;
 }
 .prediction {
   font-size: 11px;
@@ -108,11 +112,6 @@ a {
   font-size: 34px;
   margin-bottom: 10px;
 }
-.weather-forecast {
-
-  text-align: center;
-  margin-bottom: 10px;
-}
 .small-image {
   display: block;
   margin-top: 2px;
@@ -123,7 +122,6 @@ a {
   font-size: 9px;
 }
 .temperature-prediction-max {
-  margin-right: 3px;
   color:#1f2931
 }
 .temperature-prediction-min {
@@ -135,7 +133,9 @@ a {
 }
 .background-image {
   position: relative;
-  left: 40px;
+  left: 30px;
+  top: -17px;
+  width: 300px;
 }
 .boldTemp {
   font-weight: bolder;
@@ -166,4 +166,8 @@ a {
 #celsius-element,
 #fahrenheit-element {
   font-size: 12px;
+}
+#weather-forecast {
+  margin-bottom: 20px;
+  text-align: center;
 }
