@@ -109,8 +109,7 @@ a {
   margin-bottom: 10px;
 }
 .prediction-small {
-  display: block;
-  margin: 0 auto;
+
   text-align: center;
   margin-bottom: 10px;
 }
@@ -119,6 +118,16 @@ a {
   margin-top: 2px;
   margin-bottom: 2px;
   max-width: 25px;
+}
+.temperature-prediction-max, .temperature-prediction-min {
+  font-size: 9px;
+}
+.temperature-prediction-max {
+  margin-right: 3px;
+  color:#1f2931
+}
+.temperature-prediction-min {
+  color: #7a8792;
 }
 .text {
   font-size: 11px;
@@ -129,10 +138,12 @@ a {
   left: 40px;
 }
 .boldTemp {
-  font-weight: bold;
+  font-weight: bolder;
+  text-shadow: 0.8px 0 #888888;
 }
 .lightTemp {
   font-weight: lighter;
+  text-decoration: none;
 }
 .no-events {
   pointer-events: none;
@@ -155,8 +166,4 @@ a {
 #celsius-element,
 #fahrenheit-element {
   font-size: 12px;
-}
-#fahrenheit-element {
-  position: relative;
-  left: 10px;
 }
