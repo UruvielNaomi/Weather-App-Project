@@ -131,25 +131,6 @@ function showPosition(position) {
   axios.get(apiUrl).then(showDefaultTemperature);
 }
 
-function convertToFahrenheit(event) {
-  event.preventDefault();
-  let temperatureElement = document.querySelector("#temperature");
-  let temperature = temperatureElement.innerHTML;
-  temperatureElement.innerHTML = Math.round((temperature * 9) / 5 + 32);
-  celsiusElement.classList.remove("boldTemp", "no-events");
-  fahrenheitElement.classList.add("boldTemp", "no-events");
-}
-
-function convertToCelsius(event) {
-  event.preventDefault();
-  let temperatureElement = document.querySelector("#temperature");
-  let temperature = temperatureElement.innerHTML;
-  temperature = Number(temperature);
-  temperatureElement.innerHTML = Math.round((temperature - 32) * 0.5556);
-  fahrenheitElement.classList.remove("boldTemp", "no-events");
-  celsiusElement.classList.add("boldTemp", "no-events");
-}
-
 function darkThemeWebsite() {
   var element = document.body;
   element.classList.toggle("darkTheme");
@@ -162,11 +143,6 @@ function getGeoLocation() {
 let cityForm = document.querySelector("#city-form");
 cityForm.addEventListener("submit", searchCity);
 
-let fahrenheitElement = document.querySelector("#fahrenheit-element");
-fahrenheitElement.addEventListener("click", convertToFahrenheit);
-
-let celsiusElement = document.querySelector("#celsius-element");
-celsiusElement.addEventListener("click", convertToCelsius);
 
 let darkButton = document.querySelector(".darkButton");
 darkButton.addEventListener("click", darkThemeWebsite);
